@@ -11776,8 +11776,6 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="IBM-&#25512;&#33616;&#31995;&#32479;">IBM &#25512;&#33616;&#31995;&#32479;<a class="anchor-link" href="#IBM-&#25512;&#33616;&#31995;&#32479;">&#182;</a></h1><p>在此 notebook 中，你将运用所学的推荐技能处理 IBM Watson Studio 平台的真实数据。</p>
-<p>你可以通过此 workspace 提交 notebook，或者在本地机器上操作并在下个页面提交 notebook。无论是哪种方式，都请确保代码符合项目<a href="https://review.udacity.com/#!/rubrics/2632/view">审阅标准</a>。<strong>请定期保存代码。</strong></p>
-<p>跟着目录操作，你将能够创建多个不同的推荐方法，这些方法可以用于不同的情形。</p>
 <h2 id="&#30446;&#24405;">&#30446;&#24405;<a class="anchor-link" href="#&#30446;&#24405;">&#182;</a></h2><p>I. <a href="#Exploratory-Data-Analysis">探索性数据分析</a><br>
 II.<a href="#Rank">基于排名的推荐方法</a><br>
 III.<a href="#User-User">基于用户-用户的协同过滤</a><br>
@@ -13499,7 +13497,7 @@ Your top_20 looks like the solution list! Nice job.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>2.</code> 完成以下函数，该函数应该接受 user_id，并提供与该用户最相似的有序用户列表（从最相似到最不相似）。返回的列表不应包含提供的 user_id，因为我们知道每个用户都与其本身相似。因为每个用户的结果是二元的，所以建议用两个用户的点积表示相似性。</p>
+<p><code>2.</code> 以下函数接受 user_id，并提供与该用户最相似的有序用户列表（从最相似到最不相似）。返回的列表不应包含提供的 user_id，因为我们知道每个用户都与其本身相似。因为每个用户的结果是二元的，所以建议用两个用户的点积表示相似性。</p>
 
 </div>
 </div>
@@ -13946,7 +13944,7 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>5.</code> 请利用上述函数正确填写以下字典。然后对照解答检验该字典。</p>
+<p><code>5.</code> 利用上述函数正确填写以下字典。然后对照解答检验该字典。</p>
 
 </div>
 </div>
@@ -14679,7 +14677,7 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>5.</code> 现在对上述 <strong>user_item_train</strong> 数据集进行奇异值分解，并得出 U、S 和 V 转置矩阵。然后判断在使用不同的潜在特征数量时，可以使用此矩阵分解方法对 <strong>user_item_test</strong> 数据集中的多少行做出预测，并根据测试数据的准确率确定应该保留多少个潜在特征。这个问题需要运用在第 <code>2</code> - <code>4</code>.个问题中完成的步骤。</p>
+<p><code>5.</code> 现在对上述 <strong>user_item_train</strong> 数据集进行奇异值分解，并得出 U、S 和 V 转置矩阵。然后判断在使用不同的潜在特征数量时，可以使用此矩阵分解方法对 <strong>user_item_test</strong> 数据集中的多少行做出预测，并根据测试数据的准确率确定应该保留多少个潜在特征。</p>
 <p>通过以下单元格了解 SVD 在测试数据上做出推荐预测的效果如何。</p>
 
 </div>
@@ -14861,7 +14859,7 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>6.</code> 在以下单元格中解释上个问题的结果。讨论下会如何判断上述推荐系统是否比用户目前查找文章的方式更好。</p>
+<p><code>6.</code> 在以下单元格中解释上个问题的结果。讨论会如何判断上述推荐系统是否比用户目前查找文章的方式更好。</p>
 <p><strong>可以看出随着number of latent features的增加，预测的错误值也增加（因为矩阵是稀疏矩阵，绝大部分是0），SVD的效果并不好。目前更好的方式是基于用户-用户的协同过滤。可以通过A/B测试来检验实际效果。</strong></p>
 
 </div>
