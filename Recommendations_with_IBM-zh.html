@@ -11784,7 +11784,6 @@ III.<a href="#User-User">基于用户-用户的协同过滤</a><br>
 IV.<a href="#Content-Recs">基于内容的推荐方法（选修内容）</a><br>
 V. <a href="#Matrix-Fact">矩阵分解</a><br>
 VI.<a href="#conclusions">其他内容和总结</a></p>
-<p>你可以在 notebook 的结尾处找到提交 notebook 的指南。首先导入必要的库并读取数据。</p>
 
 </div>
 </div>
@@ -13274,7 +13273,7 @@ Name: article_id, dtype: float64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#31532;&#20108;&#37096;&#20998;&#65306;&#22522;&#20110;&#25490;&#21517;&#30340;&#25512;&#33616;&#26041;&#27861;"><a class="anchor" id="Rank">&#31532;&#20108;&#37096;&#20998;&#65306;&#22522;&#20110;&#25490;&#21517;&#30340;&#25512;&#33616;&#26041;&#27861;</a><a class="anchor-link" href="#&#31532;&#20108;&#37096;&#20998;&#65306;&#22522;&#20110;&#25490;&#21517;&#30340;&#25512;&#33616;&#26041;&#27861;">&#182;</a></h3><p>与之前的课程不同，我们没有关于用户是否喜欢某篇文章的评分。我们只知道用户与文章互动了。在这些情形下，文章的热门程度只能通过用户与文章的互动频率来判断。</p>
-<p><code>1.</code> 填写以下函数，使其返回前 <strong>n</strong> 篇文章，按照互动次数从高到低排序。使用以下测试测试你的函数。</p>
+<p><code>1.</code> 填写以下函数，使其返回前 <strong>n</strong> 篇文章，按照互动次数从高到低排序。</p>
 
 </div>
 </div>
@@ -13501,7 +13500,6 @@ Your top_20 looks like the solution list! Nice job.
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>2.</code> 完成以下函数，该函数应该接受 user_id，并提供与该用户最相似的有序用户列表（从最相似到最不相似）。返回的列表不应包含提供的 user_id，因为我们知道每个用户都与其本身相似。因为每个用户的结果是二元的，所以建议用两个用户的点积表示相似性。</p>
-<p>使用测试测试你的函数。</p>
 
 </div>
 </div>
@@ -13594,7 +13592,7 @@ The 3 most similar users to user 46 are: [4201, 23, 3782]
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>3.</code> 创建了为每个用户提供最相似用户的函数后，你需要使用这些用户查找可以推荐的文章。完成以下函数，以返回向每个用户推荐的文章。</p>
+<p><code>3.</code> 创建了为每个用户提供最相似用户的函数后，使用这些用户查找可以推荐的文章, 以下函数，以返回向每个用户推荐的文章。</p>
 
 </div>
 </div>
@@ -13948,7 +13946,7 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>5.</code> 请利用上述函数正确填写以下字典。然后对照解答检验该字典。按照以下注释提供必要的代码。</p>
+<p><code>5.</code> 请利用上述函数正确填写以下字典。然后对照解答检验该字典。</p>
 
 </div>
 </div>
@@ -14010,9 +14008,9 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>6.</code> 如果是新用户，你可以使用上述哪个函数做出推荐？请解释。你能想到更好的推荐方法吗？在以下单元格中解释向新用户做出推荐的更好方法。</p>
-<p><strong>请在此处填写答案。</strong></p>
-<p><code>7.</code> 利用现有函数向以下新用户提供前 10 篇推荐文章。你可以对照我们的解答测试你的函数，确保在如何做出推荐方面与我们的想法一致。</p>
+<p><code>6.</code> 如果是新用户，使用上述哪个函数做出推荐？</p>
+<p><strong>基于排名的推荐方法。</strong></p>
+<p><code>7.</code> 利用现有函数向以下新用户提供前 10 篇推荐文章。</p>
 
 </div>
 </div>
@@ -14459,16 +14457,15 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>请在此处填写答案。</strong>
-SVD, numpy缺省full_matrices=True，所以对user_item_matrix(users by articles)进行SVD， 依次得到u, s, vt三个矩阵, u就是大小为用户数X用户数对方阵，可以认为是对用户一种embedding， u每一行是一个embedding。 s是大小为潜在因子数X潜在因子数， 为降序权重矩阵，表示每个潜在因子对于重构原始用户-文章矩阵对重要性。vt是大小为潜在因子数X文章数，表示文章与每个潜在因子对关系对重要性，可以认为是对每个文章embedding， vt每一列是一篇文章的embedding。</p>
-<p><code>3.</code> 如何确定潜在特征的数量？这个问题比较难。运行以下单元格后你会发现，随着潜在特征数量的增加，用户-项目矩阵中 1 和 0 值的预测错误率会降低。运行以下单元格，了解当潜在特征的数量增加时，准确率会如何提高。</p>
+<p><strong>SVD, numpy缺省full_matrices=True，所以对user_item_matrix(users by articles)进行SVD， 依次得到u, s, vt三个矩阵, u就是大小为用户数X用户数对方阵，可以认为是对用户一种embedding， u每一行是一个embedding。 s是大小为潜在因子数X潜在因子数， 为降序权重矩阵，表示每个潜在因子对于重构原始用户-文章矩阵对重要性。vt是大小为潜在因子数X文章数，表示文章与每个潜在因子对关系对重要性，可以认为是对每个文章embedding， vt每一列是一篇文章的embedding。。</strong></p>
+<p><code>3.</code> 如何确定潜在特征的数量？随着潜在特征数量的增加，用户-项目矩阵中 1 和 0 值的预测错误率会降低。运行以下单元格，了解当潜在特征的数量增加时，准确率会如何提高。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[338]:</div>
+<div class="prompt input_prompt">In&nbsp;[383]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_latent_feats</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">700</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
@@ -14502,18 +14499,6 @@ SVD, numpy缺省full_matrices=True，所以对user_item_matrix(users by articles
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[30589.0, 24138.0, 20143.0, 16495.0, 13596.0, 11457.0, 9541.0, 7850.0, 6616.0, 5654.0, 4748.0, 3945.0, 3329.0, 2759.0, 2328.0, 1932.0, 1629.0, 1327.0, 1089.0, 861.0, 719.0, 564.0, 455.0, 345.0, 259.0, 184.0, 148.0, 97.0, 64.0, 41.0, 19.0, 15.0, 2.0, 0.0, 0.0]
-45993
-</pre>
-</div>
-</div>
 
 <div class="output_area">
 
@@ -14876,21 +14861,8 @@ SVD, numpy缺省full_matrices=True，所以对user_item_matrix(users by articles
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>6.</code> 在以下单元格中解释上个问题的结果。根据你得出的结果，讨论下你会如何判断上述推荐系统是否比用户目前查找文章的方式更好。</p>
-<p><strong>请在此处填写答案。</strong></p>
-<p>可以看出随着number of latent features的增加，预测的错误值也增加（因为矩阵是稀疏矩阵，绝大部分是0），SVD的效果并不好。目前更好的方式是基于用户-用户的协同过滤。</p>
-<p><a id='conclusions'></a></p>
-<h3 id="&#20854;&#20182;&#20869;&#23481;">&#20854;&#20182;&#20869;&#23481;<a class="anchor-link" href="#&#20854;&#20182;&#20869;&#23481;">&#182;</a></h3><p>你现在可以保存为每个用户推荐的文章，开发一个类来作出新的预测并更新结果，以及创建一个部署结果的应用。这些任务并不是此项目必须完成的任务。但是，在学完课程知识后，你肯定能够继续完成这些任务并改进你的项目。</p>
-<h2 id="&#24635;&#32467;">&#24635;&#32467;<a class="anchor-link" href="#&#24635;&#32467;">&#182;</a></h2><blockquote><p>恭喜！你已经完成 IBM 推荐系统项目。</p>
-<p><strong>小贴士</strong>：当你对项目满意后，请检查报告并看看是否满足所有<a href="https://review.udacity.com/#!/rubrics/2632/view">审阅标准</a>。请删除所有的<strong>小贴士</strong>（例如上方小贴士），使演示尽可能流畅。</p>
-</blockquote>
-<h2 id="&#25552;&#20132;&#25351;&#21335;">&#25552;&#20132;&#25351;&#21335;<a class="anchor-link" href="#&#25552;&#20132;&#25351;&#21335;">&#182;</a></h2><blockquote><p>在提交项目之前，你需要在 workspace 的此部分创建 notebook 的 .html 或 .pdf 版本。运行以下单元格即可创建这两种版本。如果操作正确，系统会返回代码 0，并且你可以在 workspace 目录（点击左上角的橙色 Jupyter 图标）中看到生成的 .html 文件。</p>
-<p>或者，你可以通过<strong>文件</strong> &gt; <strong>下载为</strong>子菜单将此报告下载为 .html 文件，然后手动将报告上传到 workspace 目录中：点击左上角的橙色 Jupyter 图标，然后点击“上传”按钮。</p>
-<p>完成这些步骤后，你可以点击右下角的“提交项目”按钮，提交项目。这样便会创建和提交一个 zip 文件，其中包含此 .ipynb 文件和你创建的 .html 或 .pdf 文件。恭喜！</p>
-</blockquote>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
-<span class="n">call</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;nbconvert&#39;</span><span class="p">,</span> <span class="s1">&#39;Recommendations_with_IBM.ipynb&#39;</span><span class="p">])</span>
-</pre></div>
+<p><code>6.</code> 在以下单元格中解释上个问题的结果。讨论下会如何判断上述推荐系统是否比用户目前查找文章的方式更好。</p>
+<p><strong>可以看出随着number of latent features的增加，预测的错误值也增加（因为矩阵是稀疏矩阵，绝大部分是0），SVD的效果并不好。目前更好的方式是基于用户-用户的协同过滤。可以通过A/B测试来检验实际效果。</strong></p>
 
 </div>
 </div>
