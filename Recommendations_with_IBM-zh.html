@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="IBM-&#25512;&#33616;&#31995;&#32479;">IBM &#25512;&#33616;&#31995;&#32479;<a class="anchor-link" href="#IBM-&#25512;&#33616;&#31995;&#32479;">&#182;</a></h1><p>在此 notebook 中，你将运用所学的推荐技能处理 IBM Watson Studio 平台的真实数据。</p>
+<h1 id="IBM-&#25512;&#33616;&#31995;&#32479;">IBM &#25512;&#33616;&#31995;&#32479;<a class="anchor-link" href="#IBM-&#25512;&#33616;&#31995;&#32479;">&#182;</a></h1><p>在此 notebook 中，将处理 IBM Watson Studio 平台的真实数据。</p>
 <h2 id="&#30446;&#24405;">&#30446;&#24405;<a class="anchor-link" href="#&#30446;&#24405;">&#182;</a></h2><p>I. <a href="#Exploratory-Data-Analysis">探索性数据分析</a><br>
 II.<a href="#Rank">基于排名的推荐方法</a><br>
 III.<a href="#User-User">基于用户-用户的协同过滤</a><br>
@@ -12483,7 +12483,7 @@ dtype: int64</pre>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;article_id&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
 <span class="n">df_clean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-<span class="c1">#df_clean</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[[</span><span class="s1">&#39;article_id&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_clean</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -12595,6 +12595,7 @@ Name: user_id, dtype: float64</pre>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find the median of interactions - by user</span>
+
 <span class="n">views_cnts_by_user</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;user_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">views_cnts_by_user</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -12744,35 +12745,6 @@ Name: article_id, dtype: int64</pre>
 
 <span class="n">keep_test</span> <span class="o">=</span> <span class="n">df_content</span><span class="p">[</span><span class="s1">&#39;article_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">)</span>
 <span class="n">df_content</span> <span class="o">=</span> <span class="n">df_content</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">keep_test</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[255]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df_content.shape</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[250]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># check the result after remove duplicates</span>
-
-<span class="c1"># for i in [50, 221, 232, 398, 577]:</span>
-<span class="c1">#     print(df_content[df_content[&#39;article_id&#39;] == i][&#39;doc_full_name&#39;])</span>
 </pre></div>
 
 </div>
@@ -13041,7 +13013,6 @@ Name: article_id, dtype: int64</pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># find the median of interactions - by articles</span>
 
 <span class="n">views_counts_by_article</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;article_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-
 <span class="n">views_counts_by_article</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
@@ -13080,19 +13051,6 @@ Name: article_id, dtype: float64</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[215]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#views_counts_by_article</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -13113,7 +13071,7 @@ Name: article_id, dtype: float64</pre>
 <div class="prompt input_prompt">In&nbsp;[318]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The most viewed article in the dataset was viewed how many times?</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The most viewed article in the clean dataset was viewed how many times?</span>
 
 <span class="n">df_clean</span><span class="p">[</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;article_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1330.0</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
@@ -13173,8 +13131,9 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In&nbsp;[213]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">views_cnts_by_article</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;article_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The most viewed article in the original dataset was viewed how many times?</span>
 
+<span class="n">views_cnts_by_article</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;article_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">views_cnts_by_article</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 
@@ -13207,19 +13166,6 @@ Name: article_id, dtype: float64</pre>
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[216]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#views_cnts_by_article</span>
-</pre></div>
-
-</div>
 </div>
 </div>
 
@@ -13271,7 +13217,7 @@ Name: article_id, dtype: float64</pre>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="&#31532;&#20108;&#37096;&#20998;&#65306;&#22522;&#20110;&#25490;&#21517;&#30340;&#25512;&#33616;&#26041;&#27861;"><a class="anchor" id="Rank">&#31532;&#20108;&#37096;&#20998;&#65306;&#22522;&#20110;&#25490;&#21517;&#30340;&#25512;&#33616;&#26041;&#27861;</a><a class="anchor-link" href="#&#31532;&#20108;&#37096;&#20998;&#65306;&#22522;&#20110;&#25490;&#21517;&#30340;&#25512;&#33616;&#26041;&#27861;">&#182;</a></h3><p>与之前的课程不同，我们没有关于用户是否喜欢某篇文章的评分。我们只知道用户与文章互动了。在这些情形下，文章的热门程度只能通过用户与文章的互动频率来判断。</p>
-<p><code>1.</code> 填写以下函数，使其返回前 <strong>n</strong> 篇文章，按照互动次数从高到低排序。</p>
+<p><code>1.</code> 以下函数，使其返回前 <strong>n</strong> 篇文章，按照互动次数从高到低排序。</p>
 
 </div>
 </div>
@@ -13793,7 +13739,7 @@ The 3 most similar users to user 46 are: [4201, 23, 3782]
 <li>当所有用户与给定用户的邻近程度都一样时，我们并非随意选择用户，而是先选择总互动次数最多的用户，然后选择互动次数第二多的用户。</li>
 </ul>
 <ul>
-<li>当推荐的文章数量以低于 m 的数字开始并以高于 m的数字结束时，我们并非随意选择文章，而是先选择总互动次数最多的文章，然后选择总互动次数第二多的文章。你可以利用之前编写的 <strong>top_articles</strong> 函数获得这种排名。</li>
+<li>当推荐的文章数量以低于 m 的数字开始并以高于 m的数字结束时，我们并非随意选择文章，而是先选择总互动次数最多的文章，然后选择总互动次数第二多的文章。利用之前编写的 <strong>top_articles</strong> 函数获得这种排名。</li>
 </ul>
 
 </div>
@@ -14398,7 +14344,7 @@ The top 10 recommendations for user 20 are the following article names:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>2.</code> 在此部分，你可以对用户-项目矩阵运用<a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.linalg.svd.html">numpy</a> 的奇异值分解方法。在单元格中执行 SVD，并解释为何与课程中的步骤不一样。</p>
+<p><code>2.</code> 在此部分，对用户-项目矩阵运用<a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.linalg.svd.html">numpy</a> 的奇异值分解方法。在单元格中执行 SVD，并解释为何与课程中的步骤不一样。</p>
 
 </div>
 </div>
